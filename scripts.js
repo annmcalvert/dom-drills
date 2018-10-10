@@ -1,4 +1,4 @@
-
+let list = document.createElement('ul');
 
 let div = document.createElement('div');
 div.setAttribute("class", "header-container");
@@ -21,6 +21,8 @@ let header6 = document.createElement('h6');
 header6.setAttribute("class", "h6");
 let headerTextH6 = document.createTextNode('This is an h6');
 
+
+
 header1.appendChild(headerTextH1);
 div.appendChild(header1);
 header2.appendChild(headerTextH2);
@@ -34,17 +36,36 @@ div.appendChild(header5);
 header6.appendChild(headerTextH6);
 div.appendChild(header6);
 
-//seems to be working but returns "undefined" sometimes
+
 let changeColor = ["blue", "green", "yellow", "orange", "red", "purple", "black", "grey"];
-let randomColor = changeColor[Math.ceil(Math.random() *changeColor.length)];
-console.log(randomColor);
+let randomColor = changeColor[Math.ceil(Math.random() * changeColor.length) - 1];
+
 
 //changes color when header1 is clicked
-header1.addEventListener('dblclick', function() {
+header1.addEventListener('dblclick', function () {
     div.getElementsByClassName("h1")[0].style.color = randomColor;
 })
 
 
-window.addEventListener('DOMContentLoaded', function() {
+
+
+
+
+
+
+window.addEventListener('DOMContentLoaded', function () {
     document.body.appendChild(div);
+    document.body.appendChild(list);
+
+    let btn = document.getElementsByClassName("btn")[0];
+    
+
+    //started at step 11
+    btn.addEventListener("click", function () {
+        let li = document.createElement('li');
+        let liText = document.createTextNode(`This is list item ${list.childElementCount + 1}`);
+        li.appendChild(liText);
+        list.appendChild(li);
+
+    })
 })
